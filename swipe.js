@@ -4,7 +4,11 @@
  * https://github.com/thebird/Swipe
  * Copyright 2013-2015, MIT License
  *
-*/
+ * Swipe 2.2.0
+ * Alex Grant (LocalNerve)
+ * https://github.com/localnerve/swipe-js-iso-ln
+ * Copyright 2016, MIT License
+ */
 
 (function (root, factory) {
     if (typeof module !== 'undefined' && module.exports) {
@@ -170,12 +174,15 @@
 
       if (!style) return;
 
+      style.willChange = 'transform';
+
       style.webkitTransitionDuration =
       style.MozTransitionDuration =
       style.msTransitionDuration =
       style.OTransitionDuration =
       style.transitionDuration = speed + 'ms';
 
+      style.transform =
       style.webkitTransform = 'translate(' + dist + 'px,0)' + 'translateZ(0)';
       style.msTransform =
       style.MozTransform =
@@ -231,8 +238,9 @@
     function stop() {
 
       delay = 0;
-      clearTimeout(interval);
-
+      if (interval) {
+        clearTimeout(interval);
+      }
     }
 
 
@@ -240,6 +248,8 @@
     var start = {};
     var delta = {};
     var isScrolling;
+    var scrollingThreshold = 5;
+    var excludedNodes = ['input', 'textarea', 'button', 'a', 'select', 'keygen'];
 
     // setup event capturing
     var events = {
@@ -249,12 +259,16 @@
         switch (event.type) {
           case 'touchstart': this.start(event); break;
           case 'touchmove': this.move(event); break;
-          case 'touchend': offloadFn(this.end(event)); break;
+          case 'touchend':
+            this.end(event);
+            break;
           case 'webkitTransitionEnd':
           case 'msTransitionEnd':
           case 'oTransitionEnd':
           case 'otransitionend':
-          case 'transitionend': offloadFn(this.transitionEnd(event)); break;
+          case 'transitionend':
+            this.transitionEnd(event);
+            break;
           case 'resize': offloadFn(setup); break;
         }
 
@@ -262,7 +276,6 @@
 
       },
       start: function(event) {
-
         var touches = event.touches[0];
 
         // measure start values
@@ -277,19 +290,27 @@
 
         };
 
-        // used for testing first move event
+        // used for testing move event
         isScrolling = undefined;
 
         // reset delta and end measurements
         delta = {};
 
-        // attach touchmove and touchend listeners
-        element.addEventListener('touchmove', this, false);
-        element.addEventListener('touchend', this, false);
+        // If the target is not excluded, it can be swiped.
+        // So handle this here and wire up for swiping.
+        var nodeName = event.target.nodeName.toLowerCase();
+        var parentNodeName = event.target.parentNode.nodeName.toLowerCase();
+        if (excludedNodes.indexOf(nodeName) === -1 &&
+            // hack - check the immediate parent
+            excludedNodes.indexOf(parentNodeName) === -1) {
+          event.preventDefault();
 
+          // attach touchmove and touchend listeners
+          element.addEventListener('touchmove', this, false);
+          element.addEventListener('touchend', this, false);
+        }
       },
       move: function(event) {
-
         // ensure swiping with one touch and not pinching
         if ( event.touches.length > 1 || event.scale && event.scale !== 1) return;
 
@@ -303,9 +324,13 @@
           y: touches.pageY - start.y
         };
 
-        // determine if scrolling test has run - one time test
-        if ( typeof isScrolling == 'undefined') {
-          isScrolling = !!( isScrolling || Math.abs(delta.x) < Math.abs(delta.y) );
+        // determine if scrolling test has run
+        if (typeof isScrolling === 'undefined') {
+          // don't even test if the difference of differences is not big enough
+          // to make a resonable determination.
+          if ( Math.abs(delta.x - delta.y) > scrollingThreshold ) {
+            isScrolling = !!( isScrolling || Math.abs(delta.x) < Math.abs(delta.y) );
+          }
         }
 
         // if user is not trying to scroll vertically
@@ -368,6 +393,8 @@
         // if not scrolling vertically
         if (!isScrolling) {
 
+          event.preventDefault();
+
           if (isValidSlide && !isPastBounds) {
 
             if (direction) {
@@ -401,7 +428,9 @@
 
             }
 
-            options.callback && options.callback(index, slides[index]);
+            options.callback && offloadFn(function () {
+              options.callback(index, slides[index]);
+            });
 
           } else {
 
@@ -452,7 +481,9 @@
     if (browser.addEventListener) {
 
       // set touchstart event on element
-      if (browser.touch) element.addEventListener('touchstart', events, false);
+      if (browser.touch) {
+        element.addEventListener('touchstart', events, false);
+      }
 
       if (browser.transitions) {
         element.addEventListener('webkitTransitionEnd', events, false);
