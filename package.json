@@ -1,0 +1,19 @@
+{
+  "name": "swipe-js-iso-ln",
+  "version": "2.2.0",
+  "main": "swipe.js",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": "MIT",
+  "description": "Fork of original [Swipe](https://github.com/thebird/Swipe) in order to be published to NPM (has no deps) and being compatible with isomorphic apps.",
+  "maintainers": [
+    {
+      "name": "localnerve (Alex Grant)",
+      "email": "alex@localnerve.com"
+    }
+  ]
+}
