@@ -2,7 +2,7 @@
 
 > swipe-js-iso-ln is a fork of `swipe-js-iso` by dmitri.voronianski@gmail.com, which itself is a fork of the original [Swipe](https://github.com/thebird/Swipe) by Brad Birdsall.
 
-_Hint: Use this with [react-swipe](https://github.com/localnerve/react-swipe) component and [React](https://facebook.github.io/react)._
+_Hint: Use this with [react-swipe](https://github.com/localnerve/react-swipe) component and [React](https://facebook.github.io/react) for isomorphic/universal apps._
 
 ## Why
 This fork contains bug fixes and updates, because the `swipe-js-iso` repo by [voronianski](https://github.com/voronianski) was not found.
