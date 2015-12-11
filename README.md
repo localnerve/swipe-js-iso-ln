@@ -4,7 +4,7 @@
 
 _Hint: Use this with [react-swipe](https://github.com/localnerve/react-swipe) component and [React](https://facebook.github.io/react) for isomorphic/universal apps._
 
-## Why
+## Why This Fork Exists
 This fork contains bug fixes and updates, because the `swipe-js-iso` repo by [voronianski](https://github.com/voronianski) was not found.
 
 Effort was put into maintaining this because it is:
@@ -16,7 +16,7 @@ Maybe the smallest swipe library around (AFAICT). Works great with [react-swipe]
 
 This library is ~5k minified.
 
-## Where
+## Where This Fork Is Used
 This fork, used with [react-swipe](https://github.com/localnerve/react-swipe) can be seen in action in this [live example](http://flux-react-example.herokuapp.com).
 
 -------------------------------------------------------
@@ -118,12 +118,13 @@ Swipe is now compatible with all browsers, including IE7+. Swipe works best on d
 
 ## Who's using Swipe
 
-<img src='https://raw.githubusercontent.com/voronianski/Swipe/master/assets/cnn.png' width='80'>
-<img src='https://raw.githubusercontent.com/voronianski/Swipe/master/assets/airbnb.png' width='170'>
-<img src='https://raw.githubusercontent.com/voronianski/Swipe/master/assets/nhl.png' height='80'>
-<img src='https://raw.githubusercontent.com/voronianski/Swipe/master/assets/htc.png' height='80'>
-<img src='https://raw.githubusercontent.com/voronianski/Swipe/master/assets/thinkgeek.png' height='80'>
-<img src='https://raw.githubusercontent.com/voronianski/Swipe/master/assets/snapguide.png' height='80'>
+(taken from the original readme)
+* cnn
+* airbnb
+* nhl
+* htc
+* thinkgeek
+* snapguide
 
 ## License
 
