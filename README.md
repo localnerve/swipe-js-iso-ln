@@ -7,9 +7,14 @@ _Hint: Use this with [react-swipe](https://github.com/localnerve/react-swipe) co
 ## Why
 This fork contains bug fixes and updates, because the `swipe-js-iso` repo by [voronianski](https://github.com/voronianski) was not found.
 
-Effort was put into maintaining this because it is the simplest, smallest, no-dependency swipe library around (AFAIK). Works great with [react-swipe](https://github.com/localnerve/react-swipe).
+Effort was put into maintaining this because it is:
+* simple
+* small
+* no-dependencies
 
-This library is ~15k minified.
+Maybe the smallest swipe library around (AFAICT). Works great with [react-swipe](https://github.com/localnerve/react-swipe).
+
+This library is ~5k minified.
 
 ## Where
 This fork, used with [react-swipe](https://github.com/localnerve/react-swipe) can be seen in action in this [live example](http://flux-react-example.herokuapp.com).
