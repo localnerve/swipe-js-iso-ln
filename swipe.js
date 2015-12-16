@@ -248,8 +248,8 @@
     var start = {};
     var delta = {};
     var isScrolling;
-    var scrollingThreshold = 5;
-    var excludedNodes = ['input', 'textarea', 'button', 'a', 'select', 'keygen'];
+    // var scrollingThreshold = 5;
+    // var excludedNodes = ['input', 'textarea', 'button', 'a', 'select', 'keygen'];
 
     // setup event capturing
     var events = {
@@ -332,9 +332,9 @@
         if (typeof isScrolling === 'undefined') {
           // don't even test if the difference of differences is not big enough
           // to make a resonable determination.
-          if ( Math.abs(delta.x - delta.y) > scrollingThreshold ) {
+          // if ( Math.abs(delta.x - delta.y) > scrollingThreshold ) {
             isScrolling = !!( isScrolling || Math.abs(delta.x) < Math.abs(delta.y) );
-          }
+          // }
         }
 
         // if user is not trying to scroll vertically
