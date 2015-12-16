@@ -397,7 +397,7 @@
         // if not scrolling vertically
         if (!isScrolling) {
 
-          event.preventDefault();
+          // event.preventDefault();
 
           if (isValidSlide && !isPastBounds) {
 
