@@ -298,6 +298,7 @@
 
         // If the target is not excluded, it can be swiped.
         // So handle this here and wire up for swiping.
+        /*
         var nodeName = event.target.nodeName.toLowerCase();
         var parentNodeName = event.target.parentNode.nodeName.toLowerCase();
         if (excludedNodes.indexOf(nodeName) === -1 &&
@@ -309,6 +310,9 @@
           element.addEventListener('touchmove', this, false);
           element.addEventListener('touchend', this, false);
         }
+        */
+        element.addEventListener('touchmove', this, false);
+        element.addEventListener('touchend', this, false);
       },
       move: function(event) {
         // ensure swiping with one touch and not pinching
