@@ -4,7 +4,7 @@
  * https://github.com/thebird/Swipe
  * Copyright 2013-2015, MIT License
  *
- * Swipe 2.2.0
+ * Swipe 2.3.0
  * Alex Grant (LocalNerve)
  * https://github.com/localnerve/swipe-js-iso-ln
  * Copyright 2016, MIT License
@@ -243,13 +243,11 @@
       }
     }
 
-
     // setup initial vars
     var start = {};
     var delta = {};
     var isScrolling;
     // var scrollingThreshold = 5;
-    // var excludedNodes = ['input', 'textarea', 'button', 'a', 'select', 'keygen'];
 
     // setup event capturing
     var events = {
@@ -296,21 +294,6 @@
         // reset delta and end measurements
         delta = {};
 
-        // If the target is not excluded, it can be swiped.
-        // So handle this here and wire up for swiping.
-        /*
-        var nodeName = event.target.nodeName.toLowerCase();
-        var parentNodeName = event.target.parentNode.nodeName.toLowerCase();
-        if (excludedNodes.indexOf(nodeName) === -1 &&
-            // hack - check the immediate parent
-            excludedNodes.indexOf(parentNodeName) === -1) {
-          event.preventDefault();
-
-          // attach touchmove and touchend listeners
-          element.addEventListener('touchmove', this, false);
-          element.addEventListener('touchend', this, false);
-        }
-        */
         element.addEventListener('touchmove', this, false);
         element.addEventListener('touchend', this, false);
       },
