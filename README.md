@@ -1,5 +1,7 @@
 # Swipe
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/localnerve/swipe-js-iso-ln.svg)](https://greenkeeper.io/)
+
 > swipe-js-iso-ln is a fork of `swipe-js-iso` by dmitri.voronianski@gmail.com, which itself is a fork of the original [Swipe](https://github.com/thebird/Swipe) by Brad Birdsall.
 
 _Hint: Use this with [react-swipe](https://github.com/localnerve/react-swipe) component and [React](https://facebook.github.io/react) for isomorphic/universal apps._
